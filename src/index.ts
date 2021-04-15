@@ -1,5 +1,9 @@
+import { help, version } from "./help";
+
 async function run() {
-  console.log('hello world')
+  const args = process.argv.slice(2);
+
+  if (help(args) || version(args)) return;
 }
 
 (async () => {
