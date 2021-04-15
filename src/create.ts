@@ -15,7 +15,7 @@ interface Answers {
 export const initBlog = async (): Promise<void> => {
   const answers: Answers = await prompt();
 
-  await downloadBoilerplate(answers);
+  await downloadBoilerplate(answers, "1/2");
 
   await installDependencies(answers.name, "2/2");
 
@@ -48,8 +48,8 @@ const prompt = (): Promise<Answers> => {
   return inquirer.prompt(questions);
 };
 
-const downloadBoilerplate = async (answers: Answers) => {
-  const loading = new Spinner(bold("[1/2] Creating project..."));
+const downloadBoilerplate = async (answers: Answers, step: string) => {
+  const loading = new Spinner(bold(`${step} Creating project...`));
   loading.setSpinnerString(18);
   loading.start();
 
