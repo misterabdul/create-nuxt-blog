@@ -1,9 +1,6 @@
-import { bold, cyan } from "colorette";
-import { Spinner } from "cli-spinner";
+import { cyan } from "colorette";
 
-import { rimraf } from "./utils/utils";
-import { downloadBlogBoilerplate } from "./utils/download";
-import { unZipBuffer } from "./utils/unzip";
+import { downloadBoilerplate } from "./utils/download";
 import { installDependencies } from "./utils/install";
 
 const inquirer = require("inquirer");
@@ -15,7 +12,7 @@ interface Answers {
 export const initBlog = async (): Promise<void> => {
   const answers: Answers = await prompt();
 
-  await downloadBoilerplate(answers, "1/2");
+  await downloadBoilerplate(answers.name, "1/2");
 
   await installDependencies(answers.name, "2/2");
 
@@ -46,19 +43,4 @@ const prompt = (): Promise<Answers> => {
   ];
 
   return inquirer.prompt(questions);
-};
-
-const downloadBoilerplate = async (answers: Answers, step: string) => {
-  const loading = new Spinner(bold(`${step} Creating project...`));
-  loading.setSpinnerString(18);
-  loading.start();
-
-  // 1. Remove dir
-  rimraf(answers.name);
-
-  // 2. Download starter
-  const buffer = await downloadBlogBoilerplate();
-  await unZipBuffer(buffer, answers.name);
-
-  loading.stop(true);
 };
