@@ -4,7 +4,7 @@ import { downloadBoilerplate } from "./utils/download";
 import { writePackageJson } from "./utils/writer";
 import { installDependencies } from "./utils/install";
 
-const inquirer = require("inquirer");
+import inquirer from "inquirer";
 
 interface Answers {
   name: string;
