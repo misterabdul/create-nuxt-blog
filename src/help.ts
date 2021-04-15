@@ -1,4 +1,4 @@
-import * as packageData from "../package.json";
+const packageData = require("../package.json");
 
 export function help(args: string[]): boolean {
   const found = args.indexOf("--help") >= 0 || args.indexOf("-h") >= 0;
