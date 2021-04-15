@@ -1,6 +1,7 @@
 import { cyan } from "colorette";
 
 import { downloadBoilerplate } from "./utils/download";
+import { writePackageJson } from "./utils/writer";
 import { installDependencies } from "./utils/install";
 
 const inquirer = require("inquirer");
@@ -12,9 +13,11 @@ interface Answers {
 export const initBlog = async (): Promise<void> => {
   const answers: Answers = await prompt();
 
-  await downloadBoilerplate(answers.name, "1/2");
+  await downloadBoilerplate(answers.name, "1/3");
 
-  await installDependencies(answers.name, "2/2");
+  await writePackageJson(answers.name, "2/3");
+
+  await installDependencies(answers.name, "3/3");
 
   info(answers);
 };
