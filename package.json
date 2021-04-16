@@ -1,7 +1,7 @@
 {
   "name": "@misterabdul/create-nuxt-blog",
   "author": "Abdul Rahmad Pasaribu <abdoelrachmad@gmail.com>",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Create a new nuxt blog project based on : https://github.com/misterabdul/nuxt-blog-boilerplate.",
   "license": "WTFPL",
   "repository": {
